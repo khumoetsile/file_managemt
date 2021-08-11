@@ -29,9 +29,7 @@
                                 <button type="button" class="btn btn-primary">Edit</button>
                                 </a>
                                 <a href="{{ route('admin.users.destroy',$user->id) }}">
-                                <form action="{{ route('admin.users.destroy',$user) }}" method="
-                                POST">
-                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
+                                <form action="{{ route('admin.users.destroy',$user) }}" method="POST">
                                 @csrf
                                 {{ method_field('delete') }}
                                 <button type="submit" class="btn btn-danger">Delete</button>
