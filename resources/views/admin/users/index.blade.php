@@ -8,7 +8,9 @@
                 <div class="card-header">{{ __('Users') }}</div>
 
                 <div class="card-body">
-
+                    <a href="{{ route('admin.users.add',$user->id) }}">
+                        <button type="button" class="btn btn-primary">Add</button>
+                        </a>
                     <table class="table">
                         <thead>
                             <tr>
@@ -25,15 +27,19 @@
                             <td>{{$user->email}}</td>
                             <td>{{ implode(',',$user->roles()->get()->pluck('name')->toArray())  }}</td>
                             <td>
+                                @can('edit-users')
                                 <a href="{{ route('admin.users.edit',$user->id) }}">
                                 <button type="button" class="btn btn-primary">Edit</button>
                                 </a>
+                                @endcan
+                                @can('delete-users')
                                 <a href="{{ route('admin.users.destroy',$user->id) }}">
                                 <form action="{{ route('admin.users.destroy',$user) }}" method="POST">
                                 @csrf
                                 {{ method_field('delete') }}
                                 <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
+                                @endcan
 
                                 </a>
                             </td>
