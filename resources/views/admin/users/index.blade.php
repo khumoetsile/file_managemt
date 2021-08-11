@@ -8,12 +8,13 @@
                 <div class="card-header">{{ __('Users') }}</div>
 
                 <div class="card-body">
-                    
+
                     <table class="table">
                         <thead>
                             <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Roles</th>
                             <th scope="col">Actions</th>
                             </tr>
                         </thead>
@@ -22,17 +23,25 @@
                         <tr>
                             <td>{{$user->name}}</td>
                             <td>{{$user->email}}</td>
+                            <td>{{ implode(',',$user->roles()->get()->pluck('name')->toArray())  }}</td>
                             <td>
-                                <a href="{{ route('admin.users.update',$user->id) }}">
+                                <a href="{{ route('admin.users.edit',$user->id) }}">
                                 <button type="button" class="btn btn-primary">Edit</button>
                                 </a>
                                 <a href="{{ route('admin.users.destroy',$user->id) }}">
-                                <button type="button" class="btn btn-danger">Delete</button>
+                                <form action="{{ route('admin.users.destroy',$user) }}" method="
+                                POST">
+                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST">
+                                @csrf
+                                {{ method_field('delete') }}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+
                                 </a>
                             </td>
                         </tr>
                         @endforeach
-                            
+
                         </tbody>
                         </table>
                 </div>

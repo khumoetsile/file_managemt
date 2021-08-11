@@ -5,11 +5,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Edit User') $user->name }}</div>
+                <div class="card-header">{{ __('Edit') }}</div>
 
                 <div class="card-body">
-                    <form action="{{ route('admin.users.update',$user) }}" >
-                       
+                    <form action="{{ route('admin.users.update', $user) }}" method="POST">
+                        @csrf
+                        {{ method_field('PUT') }}
+                        @foreach ($roles as $role)
+                            <div class="form-check">
+                                <input type="checkbox" name="roles[]" value="{{ $role->id }}" />
+                                <label>{{ $role->name }}</label>
+                            </div>
+                        @endforeach
+                        <button type="submit" class="btn btn-success">Update</button>
                     </form>
                 </div>
             </div>
