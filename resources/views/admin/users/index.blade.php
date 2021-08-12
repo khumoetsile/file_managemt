@@ -8,9 +8,9 @@
                 <div class="card-header">{{ __('Users') }}</div>
 
                 <div class="card-body">
-                    <a href="{{ route('admin.users.add',$user->id) }}">
+                    <a href="{{ route('admin.users.create') }}">
                         <button type="button" class="btn btn-primary">Add</button>
-                        </a>
+                    </a>
                     <table class="table">
                         <thead>
                             <tr>

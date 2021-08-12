@@ -7,7 +7,8 @@ use App\User;
 use App\Role;
 use Gate;
 use Illuminate\Http\Request;
-
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
 class UsersController extends Controller
 {
     /**
@@ -30,10 +31,16 @@ class UsersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        //
+        $roles = Role::all();
+
+        return view('admin.users.add')->with([
+            'user' => $user,
+            'roles' => $roles
+        ]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -41,9 +48,15 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
-        //
+        $user->roles()->sync($request->roles);
+        $user_id = 9;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request['password']);
+        $user->save();
+
     }
 
     /**
