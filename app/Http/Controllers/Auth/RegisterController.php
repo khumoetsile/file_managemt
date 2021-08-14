@@ -22,8 +22,6 @@ class RegisterController extends Controller
     |
     */
 
-    c
-
     /**
      * Where to redirect users after registration.
      *
