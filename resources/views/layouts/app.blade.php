@@ -3,9 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -34,8 +31,7 @@
   <!-- Daterange picker -->
   <link rel="stylesheet" href="../../plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
-  <link rel="stylesheet" href="../../plugins/summernote/summernote-bs4.min.css">
-</head>
+  <link rel="stylesheet" href="../../plugins/summernote/0
 <body class="hold-transition sidebar-mini layout-fixed">
 
 <div class="wrapper">
@@ -47,7 +43,7 @@
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-  
+
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -57,20 +53,20 @@
           &nbsp;<i class="fas fa-user-alt"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    @can('manage-users')
-                                    <a class="dropdown-item" href="{{ route('admin.users.index') }}">
-                                        Users Management
-                                    </a>
-                                    @endcan
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+            @can('manage-users')
+            <a class="dropdown-item" href="{{ route('admin.users.index') }}">
+                Users Management
+            </a>
+            @endcan
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+        </div>
       </li>
     </ul>
   </nav>
